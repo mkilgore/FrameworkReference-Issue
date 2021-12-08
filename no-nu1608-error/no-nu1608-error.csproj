@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>no_nu1608_error</RootNamespace>
+
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <LockedMode>true</LockedMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="[3.1.0]" />
+
+    <!-- The FrameworkReference causes this program to get built with Microsoft.Extensions.Configuration 6.0.0,
+         despite the fact that the NuGet reference says we require the exact
+         version 3.1.0. With a normal PackageReference this would typically
+         produce a NU1608 since the dependency constraint is violated. -->
+
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>
